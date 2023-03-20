@@ -58,7 +58,6 @@ watch(trash, () => {
     <div style="width: 4px; height: 6em; background-color: #000;"></div>
     <div style="margin-left: 4px; width: 12px; height: 6em; background-color: #000;"></div>
   </div>
-  <br/>
 
   <div style="margin-top: 8em">
     <draggable
