@@ -49,7 +49,7 @@ watch(trash, () => {
 
   <div style="display: flex; flex-direction: row; margin-top: 6em">
     <div class="signature">
-      <div style="height: 0.55em;">4</div>
+      <div style="height: 0.8em;">4</div>
       <div>4</div>
     </div>
     <bar style="margin: 0 1em" />
@@ -80,9 +80,9 @@ watch(trash, () => {
 
 <style>
 .signature {
-    font-family: "Maestro", Helvetica, Arial;
-    font-size: 6em;
-    margin-top: -72px;
+    /* font-family: "Maestro", Helvetica, Arial; */
+    font-size: 4.5em;
+    margin-top: -32px;
 }
 .ghost {
   opacity: 0.5;
