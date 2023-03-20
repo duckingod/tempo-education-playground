@@ -17,8 +17,6 @@ const candidates = ref<Beat[]>([
   { length: 1, svg: 'whole-note' },
 ]);
 
-const items = ref([candidates.value[0], candidates.value[0], candidates.value[0], candidates.value[0]]);
-
 const handleMove = (e) => {
   const { list } = e.relatedContext;
   return sum(((list ?? []) as Beat[]).map((item) => item?.length ?? 0)) + state.draggingBeat.length <= 1;
@@ -26,10 +24,6 @@ const handleMove = (e) => {
 
 const trash = ref([
 ]);
-
-watch(trash, () => {
-    trash.value = [];
-})
 </script>
 
 <template>
