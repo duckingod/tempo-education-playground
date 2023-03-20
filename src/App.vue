@@ -10,6 +10,6 @@ import TempoPlayground from './components/TempoPlayground.vue'
 @font-face {
   font-family: "Maestro";
   src: local("Maestro"),
-   url(./assets/Maestro.ttf) format("truetype");
+   url('./assets/Maestro.ttf') format("truetype");
 }
 </style>
