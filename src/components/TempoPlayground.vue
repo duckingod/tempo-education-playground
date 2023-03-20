@@ -6,6 +6,7 @@ import { state } from '../globals';
 import { sum, cloneDeep } from 'lodash';
 import { svgs } from '../constants';
 import trashCan from '../assets/trash-can.svg'
+import { Beat } from '../types';
 
 const candidates = ref<Beat[]>([
   { length: 1/4, svg: 'quarter-note' },

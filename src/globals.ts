@@ -1,3 +1,5 @@
+import { Beat } from "./types";
+
 export const state = {
-  draggingBeat: undefined as unknown as Beat,
+  draggingBeat: { length: 0, svg: '' } as unknown as Beat,
 };

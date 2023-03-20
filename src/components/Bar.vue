@@ -4,6 +4,7 @@ import draggable from 'vuedraggable'
 import { svgs } from '../constants';
 import { sum } from 'lodash';
 import { state } from '../globals';
+import { Beat } from '../types';
 
 const items = ref([] as Beat[]);
 
