@@ -27,8 +27,8 @@ const handleMove = (e) => {
       ghost-class="ghost"
       :move="handleMove"
       item-key="id">
-      <template #item="{element}">
-        <div :style="{ width: `${24 * element.length}em` }">
+      <template #item="{index, element}">
+        <div :key="index" :style="{ width: `${24 * element.length}em` }">
           <div style="width: 6em">
             <img :src="svgs[element.svg]"/>
           </div>

@@ -24,6 +24,11 @@ const handleMove = (e) => {
 
 const trash = ref([
 ]);
+watch(trash, () => {
+  if (trash.value.length !== 0) {
+    trash.value = [];
+  }
+});
 </script>
 
 <template>
@@ -35,8 +40,8 @@ const trash = ref([
     ghost-class="ghost"
     :move="handleMove"
     item-key="id">
-    <template #item="{element}">
-        <div style="width: 96px">
+    <template #item="{index, element}">
+        <div :key="index" style="width: 96px">
           <img :src="svgs[element.svg]"/>
         </div>
     </template>
@@ -59,11 +64,11 @@ const trash = ref([
     <draggable
       style="width: 100%; height: 128px;"
       v-model="trash"
-      :group="{ name: 'beats', pull: false, put: true }"
+      :group="{ name: 'beats', pull: false, put: () => true }"
       ghost-class="trash-ghost"
       item-key="id">
       <template #item="{index, element}">
-        <div></div>
+        <div :key="index"><div></div></div>
       </template>
     </draggable>
     <div
