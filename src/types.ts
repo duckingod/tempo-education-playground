@@ -1,4 +1,9 @@
+export interface Rhythm {
+  beats: Beat[];
+  svg: string;
+}
+
 export interface Beat {
   length: number;
-  svg: string;
+  sound: string;
 }
