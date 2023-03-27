@@ -118,8 +118,7 @@ const bars = ref([[], []] as Rhythm[][]);
 </script>
 
 <template>
-  <div style="width: 960px; margin: 0 auto; ">
-
+  <div style="width: 960px; margin: 2em auto; ">
     <div style="display: flex; align-items: center; flex-direction: column; gap: 2em">
       <draggable style="display: flex; flex-direction: row; gap: 1em; justify-content: center;" v-model="candidates"
         :group="{ name: 'beats', pull: 'clone', put: false }"
@@ -132,9 +131,9 @@ const bars = ref([[], []] as Rhythm[][]);
         </template>
       </draggable>
 
-      <div style="display: flex; flex-direction: row; margin-top: 6em">
+      <div style="display: flex; flex-direction: row; margin-top: 2em">
         <div class="signature">
-          <div style="height: 0.6em;">4</div>
+          <div style="height: 0.8em;">4</div>
           <div>4</div>
         </div>
         <bar v-model="bars[0]" style="margin: 0 1em" />
@@ -171,9 +170,8 @@ const bars = ref([[], []] as Rhythm[][]);
 
 <style>
 .signature {
-  font-family: "Maestro", Helvetica, Arial;
-  font-size: 5.5em;
-  margin-top: -108px;
+  font-size: 4.5em;
+  margin-top: -32px;
 }
 
 .ghost {

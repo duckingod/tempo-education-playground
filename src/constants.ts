@@ -5,7 +5,7 @@ import halfNote from './assets/half-note.svg';
 import wholeNote from './assets/whole-note.svg';
 import quarterRest from './assets/quarter-rest.svg';
 
-import piano from './assets/piano.mp3';
+import piano from './assets/piano.wav';
 import castanets from './assets/castanets.wav';
 
 export const sounds = {
