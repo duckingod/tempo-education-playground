@@ -118,7 +118,7 @@ const bars = ref([[], []] as Rhythm[][]);
 </script>
 
 <template>
-  <div style="width: 960px; margin: 2em auto; ">
+  <div style="width: 800px; margin: 2em auto; ">
     <div style="display: flex; align-items: center; flex-direction: column; gap: 2em">
       <draggable style="display: flex; flex-direction: row; gap: 1em; justify-content: center;" v-model="candidates"
         :group="{ name: 'beats', pull: 'clone', put: false }"
@@ -144,7 +144,7 @@ const bars = ref([[], []] as Rhythm[][]);
       </div>
       <div style="width: 100%">
         <div style="margin-left:46em">
-          <button style="height: 6em; width: 12em;" @click="playTempo"><img style="width: 54px; height: 100%;"
+          <button style="height: 4em; width: 7em;" @click="playTempo"><img style="width: 3em; height: 100%;"
               :src="playSvg" /></button>
         </div>
       </div>
@@ -159,7 +159,8 @@ const bars = ref([[], []] as Rhythm[][]);
               </div>
             </template>
           </draggable>
-          <div style="margin-top: -128px; display: flex; flex-direction: row; height: 96px; justify-content: center;">
+          <div
+            style="margin-top: -128px; display: flex; flex-direction: row; width: 96px; height: 96px; justify-content: center;">
             <img :src="trashCan" />
           </div>
         </div>
