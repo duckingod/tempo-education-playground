@@ -5,15 +5,10 @@ import halfNote from './assets/half-note.svg';
 import wholeNote from './assets/whole-note.svg';
 import quarterRest from './assets/quarter-rest.svg';
 
-import piano from './assets/piano.wav';
-import castanets from './assets/castanets.wav';
-
 export const sounds = {
-  piano: new Audio(piano),
-  castanets: new Audio(castanets)
+  piano: undefined as unknown as HTMLAudioElement,
+  castanets: undefined as unknown as HTMLAudioElement,
 }
-
-sounds.castanets.volume = 0.3;
 
 export const svgs = {
   'half-note': halfNote,

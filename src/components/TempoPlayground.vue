@@ -7,7 +7,7 @@ import { cloneDeep } from 'lodash';
 import { sounds, svgs } from '../constants';
 import trashCan from '../assets/trash-can.svg'
 import { Rhythm } from '../types';
-import { dragToLengthCheck } from '../utils';
+import { dragToLengthCheck, initSounds } from '../utils';
 import playSvg from '../assets/play.svg'
 
 const candidates = ref<Rhythm[]>([
@@ -75,6 +75,7 @@ let playing = false;
 const timeoutIds = [] as number[];
 const playTempo = () => {
   let playingAudio = undefined as HTMLAudioElement | undefined;
+  initSounds();
   if (playing) {
     timeoutIds.forEach((id) => clearTimeout(id));
     playingAudio?.pause();
