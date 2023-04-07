@@ -3,66 +3,12 @@ import { ref, watch } from 'vue'
 import draggable from 'vuedraggable'
 import Bar from './Bar.vue'
 import { state } from '../globals';
-import { cloneDeep } from 'lodash';
-import { sounds, svgs } from '../constants';
+import { beats, sounds } from '../constants';
 import trashCan from '../assets/trash-can.svg'
 import { Rhythm } from '../types';
-import { dragToLengthCheck } from '../utils';
 import playSvg from '../assets/play.svg'
-
-const candidates = ref<Rhythm[]>([
-  {
-    beats: [
-      { length: 1 / 4, sound: 'piano' },
-    ],
-    svg: 'quarter-note'
-  },
-  {
-    beats: [
-      { length: 1 / 4, sound: 'rest' },
-    ],
-    svg: 'quarter-rest'
-  },
-  {
-    beats: [
-      { length: 1 / 8, sound: 'piano' },
-      { length: 1 / 8, sound: 'piano' },
-    ],
-    svg: 'double-eighth-note'
-  },
-  {
-    beats: [
-      { length: 1 / 2, sound: 'piano' },
-    ],
-    svg: 'half-note'
-  },
-  {
-    beats: [
-      { length: 1 / 2 + 1 / 4, sound: 'piano' },
-    ],
-    svg: 'dotted-half-note'
-  },
-  {
-    beats: [
-      { length: 1, sound: 'piano' }
-    ],
-    svg: 'whole-note'
-  },
-]);
-
-const prepareRhythms = [
-  {
-    beats: [
-      { length: 1 / 4, sound: 'castanets' },
-      { length: 1 / 4, sound: 'castanets' },
-      { length: 1 / 4, sound: 'castanets' },
-      { length: 1 / 4, sound: 'castanets' },
-    ],
-    svg: ''
-  }
-];
-
-const handleMove = (e) => dragToLengthCheck(e);
+import RhythmList from './RhythmList.vue';
+import Sheet from './Sheet.vue';
 
 const trash = ref([]);
 watch(trash, () => {
@@ -71,6 +17,17 @@ watch(trash, () => {
   }
 });
 
+const prepareRhythms = [
+  {
+    beats: [
+      beats.quarterCastanets,
+      beats.quarterCastanets,
+      beats.quarterCastanets,
+      beats.quarterCastanets,
+    ],
+    svg: ''
+  }
+];
 let playing = false;
 const timeoutIds = [] as number[];
 const playTempo = () => {
@@ -114,28 +71,9 @@ const bars = ref([[], []] as Rhythm[][]);
 <template>
   <div style="width: 800px; margin: 2em auto; ">
     <div style="display: flex; align-items: center; flex-direction: column; gap: 2em">
-      <draggable style="display: flex; flex-direction: row; gap: 1em; justify-content: center;" v-model="candidates"
-        :group="{ name: 'beats', pull: 'clone', put: false }"
-        :clone="(e) => { state.draggingRhythm = e; return cloneDeep(e); }" ghost-class="ghost" :move="handleMove"
-        item-key="id">
-        <template #item="{ index, element }">
-          <div :key="index" style="width: 96px">
-            <img :src="svgs[element.svg]" />
-          </div>
-        </template>
-      </draggable>
+      <RhythmList />
 
-      <div style="display: flex; flex-direction: row; margin-top: 2em">
-        <div class="signature">
-          <div style="height: 0.8em;">4</div>
-          <div>4</div>
-        </div>
-        <bar v-model="bars[0]" style="margin: 0 1em" />
-        <div style="width: 4px; height: 6em; background-color: #000;"></div>
-        <bar v-model="bars[1]" style="margin: 0 1em" />
-        <div style="width: 4px; height: 6em; background-color: #000;"></div>
-        <div style="margin-left: 4px; width: 12px; height: 6em; background-color: #000;"></div>
-      </div>
+      <Sheet v-model="bars" />
       <div style="width: 100%">
         <div style="margin-left:46em">
           <button style="height: 4em; width: 7em;" @click="playTempo"><img style="width: 3em; height: 100%;"

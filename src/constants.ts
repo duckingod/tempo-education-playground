@@ -19,3 +19,13 @@ export const svgs = {
   'whole-note': wholeNote,
   'quarter-rest': quarterRest,
 };
+
+export const beats = {
+  quarterPiano: { length: 1 / 4, sound: 'piano' },
+  eighthPiano: { length: 1 / 8, sound: 'piano' },
+  halfPiano: { length: 1 / 2, sound: 'piano' },
+  dottedHalfPiano: { length: 1 / 2 + 1 / 4, sound: 'piano' },
+  wholePiano: { length: 1, sound: 'piano' },
+  quarterRest: { length: 1 / 4, sound: 'rest' },
+  quarterCastanets: { length: 1 / 4, sound: 'castanets' },
+};
