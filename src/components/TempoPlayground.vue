@@ -7,7 +7,7 @@ import { cloneDeep } from 'lodash';
 import { sounds, svgs } from '../constants';
 import trashCan from '../assets/trash-can.svg'
 import { Rhythm } from '../types';
-import { dragToLengthCheck, initSounds } from '../utils';
+import { dragToLengthCheck } from '../utils';
 import playSvg from '../assets/play.svg'
 
 const candidates = ref<Rhythm[]>([
@@ -74,14 +74,12 @@ watch(trash, () => {
 let playing = false;
 const timeoutIds = [] as number[];
 const playTempo = () => {
-  let playingAudio = undefined as HTMLAudioElement | undefined;
-  initSounds();
   if (playing) {
     timeoutIds.forEach((id) => clearTimeout(id));
-    playingAudio?.pause();
     playing = false;
     return;
   }
+  playing = true;
   const playingBars = [
     prepareRhythms,
     ...bars.value,
@@ -91,29 +89,24 @@ const playTempo = () => {
     bar.forEach((rhythm) =>
       rhythm.beats.forEach((beat) => {
         const beatTime = (60 / state.bpm) * (beat.length * state.baseBeat);
-        if (beat.sound === 'rest') {
+        if (beat.sound !== 'rest') {
           timeoutIds.push(
             setTimeout(() => {
-              playingAudio?.pause();
-            }, current * 1000)
-          );
-        } else {
-          timeoutIds.push(
-            setTimeout(() => {
-              sounds[beat.sound].currentTime = 0;
               sounds[beat.sound].play()
-              playingAudio = sounds[beat.sound];
             }, current * 1000)
           );
           timeoutIds.push(
             setTimeout(() => {
-              playingAudio?.pause();
+              sounds[beat.sound].stop();
             }, (current + beatTime) * 1000 - 1)
           );
         }
         current += beatTime;
       }));
   });
+  setTimeout(() => {
+    playing = false;
+  }, playingBars.length * (60 / state.bpm) * state.barLength * 1000);
 }
 const bars = ref([[], []] as Rhythm[][]);
 </script>

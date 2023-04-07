@@ -4,11 +4,12 @@ import doubleEighthNote from './assets/double-eighth-note.svg';
 import halfNote from './assets/half-note.svg';
 import wholeNote from './assets/whole-note.svg';
 import quarterRest from './assets/quarter-rest.svg';
+import { Howl } from 'howler';
 
 export const sounds = {
-  piano: undefined as unknown as HTMLAudioElement,
-  castanets: undefined as unknown as HTMLAudioElement,
-}
+  piano: new Howl({ src: './piano.wav' }),
+  castanets: new Howl({ src: './castanets.wav' }),
+} as Record<string, Howl>;
 
 export const svgs = {
   'half-note': halfNote,
