@@ -7,8 +7,8 @@ import quarterRest from './assets/quarter-rest.svg';
 import { Howl } from 'howler';
 
 export const sounds = {
-  piano: new Howl({ src: './piano.wav' }),
-  castanets: new Howl({ src: './castanets.wav' }),
+  piano: new Howl({ src: ['./piano.m4a', './piano.wav'] }),
+  castanets: new Howl({ src: ['./castanets.m4a', './castanets.wav'] }),
 } as Record<string, Howl>;
 
 export const svgs = {
