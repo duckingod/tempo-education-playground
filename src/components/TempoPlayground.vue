@@ -69,32 +69,30 @@ const bars = ref([[], []] as Rhythm[][]);
 </script>
 
 <template>
-  <div style="width: 800px; margin: 2em auto; ">
-    <div style="display: flex; align-items: center; flex-direction: column; gap: 2em">
-      <RhythmList />
+  <div style="display: flex; align-items: center; flex-direction: column; gap: 2em">
+    <RhythmList />
 
-      <Sheet v-model="bars" />
-      <div style="width: 100%">
-        <div style="margin-left:46em">
-          <button style="height: 4em; width: 7em;" @click="playTempo"><img style="width: 3em; height: 100%;"
-              :src="playSvg" /></button>
-        </div>
+    <Sheet v-model="bars" />
+    <div style="width: 100%">
+      <div style="margin-left:46em">
+        <button style="height: 4em; width: 7em;" @click="playTempo"><img style="width: 3em; height: 100%;"
+            :src="playSvg" /></button>
       </div>
+    </div>
 
-      <div style="margin-top: 3em; display: flex; align-items: center; flex-direction: column;">
-        <div>
-          <draggable style="height: 128px;" v-model="trash" :group="{ name: 'beats', pull: false, put: () => true }"
-            ghost-class="trash-ghost" item-key="id">
-            <template #item="{ index, element }">
-              <div :key="index">
-                <div></div>
-              </div>
-            </template>
-          </draggable>
-          <div
-            style="margin-top: -128px; display: flex; flex-direction: row; width: 96px; height: 96px; justify-content: center;">
-            <img :src="trashCan" />
-          </div>
+    <div style="margin-top: 3em; display: flex; align-items: center; flex-direction: column;">
+      <div>
+        <draggable style="height: 128px;" v-model="trash" :group="{ name: 'beats', pull: false, put: () => true }"
+          ghost-class="trash-ghost" item-key="id">
+          <template #item="{ index, element }">
+            <div :key="index">
+              <div></div>
+            </div>
+          </template>
+        </draggable>
+        <div
+          style="margin-top: -128px; display: flex; flex-direction: row; width: 96px; height: 96px; justify-content: center;">
+          <img :src="trashCan" />
         </div>
       </div>
     </div>
@@ -102,10 +100,23 @@ const bars = ref([[], []] as Rhythm[][]);
 </template>
 
 <style>
-.signature {
-  font-size: 4.5em;
-  margin-top: -32px;
+@media (max-width: 350px) {
+
+  /* CSS rules for screens with a maximum width of 600px */
+  body {
+    font-size: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+  }
 }
+
+.container {
+  width: 800px;
+  margin: 2em auto;
+}
+
 
 .ghost {
   opacity: 0.5;

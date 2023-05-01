@@ -27,12 +27,12 @@ const candidates = ref<Rhythm[]>([
     svg: 'quarter-note'
   },
   {
-    beats: [beats.quarterRest],
-    svg: 'quarter-rest'
-  },
-  {
     beats: [beats.eighthPiano, beats.eighthPiano],
     svg: 'double-eighth-note'
+  },
+  {
+    beats: [beats.quarterRest],
+    svg: 'quarter-rest'
   },
   {
     beats: [beats.halfPiano],
@@ -41,10 +41,6 @@ const candidates = ref<Rhythm[]>([
   {
     beats: [beats.dottedHalfPiano],
     svg: 'dotted-half-note'
-  },
-  {
-    beats: [beats.wholePiano],
-    svg: 'whole-note'
   },
 ]);
 </script>

@@ -36,3 +36,17 @@ const ggg = console;
     </template>
   </draggable>
 </template>
+
+<style lang="scss">
+@media (max-width: 350px) {
+
+  /* CSS rules for screens with a maximum width of 600px */
+  body {
+    font-size: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+  }
+}
+</style>
